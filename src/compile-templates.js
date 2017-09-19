@@ -5,7 +5,7 @@ let globalConfig = require( './config.js' );
 let fileSystem = require( 'fs' );
 
 const TEMPLATES_PATH = path.join( globalConfig.ROOT_PATH, 'templates' );
-const HTMLS_PATH = path.join( globalConfig.ROOT_PATH, 'htmls' );
+const HTMLS_PATH = path.join( globalConfig.ROOT_PATH, 'static' );
 
 let nunjucksConfig = {
 
@@ -29,16 +29,15 @@ if ( require.main === module ) {
 
 
 /* START: Defines functions, utils, etc */
-
 function saveToFile( fileName ) {
 
     let inputFile = `${ fileName }.njk`;
     let outputFile = `${ fileName }.html`;
 
-    let rendered_string = nunjucks.render( `${ fileName }.njk` );
-    let destFile = path.join( HTMLS_PATH, `${ fileName }.html` );
+    let rendered_string = nunjucks.render( inputFile );
+    let destFile = path.join( HTMLS_PATH, outputFile );
 
-    fileSystem.writeFile( destFile, rendered_string, error => { 
+    fileSystem.writeFile( destFile, rendered_string, ( error ) => { 
 
         if ( error !== null ) {
             

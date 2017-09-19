@@ -4,7 +4,7 @@ let nj = require( 'nunjucks' );
 let express = require( 'express' );
 let globalConfig = require( '../config.js' );
 
-const HTMLS_PATH = path.join( globalConfig.ROOT_PATH, 'htmls' );
+const HTMLS_PATH = path.join( globalConfig.ROOT_PATH, 'static' );
 const PORT = 3000;
 
 let webApp = express();
