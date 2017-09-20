@@ -39,10 +39,7 @@ function saveToFile( fileName ) {
     } );
 }
 
-
-/* START: Main */
-{
-    let fileNames = [ 'index', 'contact' ];
+function saveToFiles( fileNames ) {
 
     fileNames.forEach( fileName => {
 
@@ -50,4 +47,13 @@ function saveToFile( fileName ) {
 
     } );
 }
-/* END: Main */
+
+function compileNunjucks( ) {
+
+    saveToFiles( [ 'index', 'contact' ] );
+}
+
+module.exports = {
+
+    compileNunjucks,
+};

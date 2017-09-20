@@ -10,11 +10,17 @@ let gulpConcat = require( 'gulp-concat' );
 let gulpHtmlmin = require( 'gulp-htmlmin' );
 
 let compileStyles = require( './src/compile-styles.js' );
+let compileTemplates = require( './src/compile-templates.js' );
 
 
-gulp.task( 'compile-sass', () => { 
+gulp.task( 'compile-styles', () => { 
 
     compileStyles.compileSass();
+} );
+
+gulp.task( 'compile-templates', () => { 
+    
+    compileTemplates.compileNunjucks();
 
 } );
 
@@ -42,19 +48,35 @@ gulp.task( 'minify-html', () => {
 
     gulp.src( htmlFiles )
         .pipe( gulpHtmlmin( options ) )
-        .pipe( gulp.dest( htmlDest ) )
+        .pipe( gulp.dest( htmlDest ) );
 
 } );
 
 
 /* Main */
 {
-    let defaultTasks = [
+    let allTasks = [
 
-        'compile-sass',
+        'compile-styles',
+        'compile-templates',
         'minify-css',
         'minify-html'
     ];
 
-    gulp.task( 'default', defaultTasks );
+    let devTasks = [
+
+        'compile-styles',
+        'compile-templates'
+    ];
+
+    let deployTasks = [
+
+        'minify-css',
+        'minify-html'
+    ];
+
+    gulp.task( 'default', devTasks );
+    gulp.task( 'all', allTasks );
+    gulp.task( 'dev', devTasks );
+    gulp.task( 'deploy', deployTasks );
 }
