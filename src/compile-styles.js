@@ -10,14 +10,12 @@ let globalConfig = require( './config.js' );
 const SCSS_DIR = path.join( globalConfig.ROOT_PATH, 'scss' );
 const OUTPUT_DIR = path.join( globalConfig.ROOT_PATH, 'static/css' )
 
-function compileScssFiles( command, args, callback ) {
+function compileSass() {
 
     let inputFilePath = path.join( SCSS_DIR, 'main.scss' );
     let outputFilePath = path.join( OUTPUT_DIR, '0.css' );
 
     let compileProcess = spawn( 'sass', [ inputFilePath, outputFilePath ] );
-
-    // console.log( 1, inputFilePath, outputFilePath );
 
     compileProcess.stdout.on( 'data', ( data ) => { 
 
@@ -33,10 +31,13 @@ function compileScssFiles( command, args, callback ) {
 
     compileProcess.on( 'exit', ( code ) => {  
 
-        console.log( `Exit code ${code} `);
+        console.log( `Sass compilation finished, exit code ${code} `);
 
     } );
 
 }
 
-compileScssFiles();
+module.exports = {
+
+    compileSass,
+};

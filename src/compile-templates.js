@@ -1,4 +1,7 @@
-/* Start of file */
+/*
+ * Compile nunjucks templates
+ *
+ */
 let path = require( 'path' );
 let nunjucks = require( 'nunjucks' );
 let globalConfig = require( './config.js' );
@@ -14,21 +17,6 @@ let nunjucksConfig = {
 
 nunjucks.configure( TEMPLATES_PATH, nunjucksConfig );
 
-/* START: Main */
-if ( require.main === module ) {
-
-    let fileNames = [ 'index', 'contact' ];
-
-    fileNames.forEach( fileName => {
-
-        saveToFile( fileName );
-
-    } );
-}
-/* END: Main */
-
-
-/* START: Defines functions, utils, etc */
 function saveToFile( fileName ) {
 
     let inputFile = `${ fileName }.njk`;
@@ -51,8 +39,15 @@ function saveToFile( fileName ) {
     } );
 }
 
-/* END: Defines functions, utils, etc */
 
+/* START: Main */
+{
+    let fileNames = [ 'index', 'contact' ];
 
+    fileNames.forEach( fileName => {
 
-/* End of file */
+        saveToFile( fileName );
+
+    } );
+}
+/* END: Main */
