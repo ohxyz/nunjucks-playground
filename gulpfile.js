@@ -55,13 +55,6 @@ gulp.task( 'minify-html', () => {
 
 /* Main */
 {
-    let allTasks = [
-
-        'compile-styles',
-        'compile-templates',
-        'minify-css',
-        'minify-html'
-    ];
 
     let devTasks = [
 
@@ -76,7 +69,14 @@ gulp.task( 'minify-html', () => {
     ];
 
     gulp.task( 'default', devTasks );
-    gulp.task( 'all', allTasks );
     gulp.task( 'dev', devTasks );
-    gulp.task( 'deploy', deployTasks );
+
+    gulp.task( 'deploy', [ 'dev' ], () => { 
+
+        gulp.start( deployTasks );
+
+    } );
 }
+
+
+

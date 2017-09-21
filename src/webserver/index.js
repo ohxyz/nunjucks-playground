@@ -4,12 +4,12 @@ let nj = require( 'nunjucks' );
 let express = require( 'express' );
 let globalConfig = require( '../config.js' );
 
-const HTMLS_PATH = path.join( globalConfig.ROOT_PATH, 'static' );
+const staticFilesPath = path.join( globalConfig.ROOT_PATH, 'static' );
 const PORT = 3000;
 
 let webApp = express();
 
-webApp.use( express.static( HTMLS_PATH ) );
+webApp.use( express.static( staticFilesPath ) );
 
 webApp.listen( PORT, () => { 
 

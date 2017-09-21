@@ -12,7 +12,7 @@
                 
                 background: red;
             }
-        </style>
+        </style>   
     </head>
     <body>
         <h1>Nunjucks 1.1</h1>
@@ -21,6 +21,22 @@
 
     <div id="main">Main</div>
     <footer>This is footer.</footer>
+        <div id="root"></div>
+        <script src="js/lib/require.js"></script>
 
+        <script>
+            var modules = [
+
+                '/js/1.js'
+            ];
+
+            requirejs.config( {
+
+                baseUrl: 'js/lib'
+
+            } );
+
+            requirejs( modules );
+        </script>
     </body>
 </html>

@@ -13,11 +13,31 @@
                 background: red;
             }
         </style>
+
+        <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>        
     </head>
     <body>
         <h1>Nunjucks 1.1</h1>
         {% block containter %}
 
         {% endblock %}
+
+        <div id="root"></div>
+        <script src="js/require.js"></script>
+
+        <script>
+            var modules = [
+
+                '1'
+            ];
+
+            requirejs.config( {
+
+                baseUrl: 'js/lib'
+            } );
+
+            requirejs( modules );
+        </script>
     </body>
 </html>
