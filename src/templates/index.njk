@@ -4,4 +4,22 @@
     {% include "header.njk" %}
     {% include "main.njk" %}
     {% include "footer.njk" %}
+    
+    <div id="root"></div>
+
+    <script src="js/lib/require.js"></script>
+    <script>
+        var modules = [
+
+            '/js/1.js'
+        ];
+
+        requirejs.config( {
+
+            baseUrl: 'js/lib'
+
+        } );
+
+        requirejs( modules );
+    </script>
 {% endblock %}

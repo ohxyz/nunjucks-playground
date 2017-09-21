@@ -21,4 +21,5 @@ define(['react', 'react-dom'], function (_react, _reactDom) {
         null,
         'Hi!'
     ), document.getElementById('root'));
+    
 });

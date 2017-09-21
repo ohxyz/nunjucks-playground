@@ -21,22 +21,24 @@
 
     <div id="main">Main</div>
     <footer>This is footer.</footer>
-        <div id="root"></div>
-        <script src="js/lib/require.js"></script>
+    
+    <div id="root"></div>
 
-        <script>
-            var modules = [
+    <script src="js/lib/require.js"></script>
+    <script>
+        var modules = [
 
-                '/js/1.js'
-            ];
+            '/js/1.js'
+        ];
 
-            requirejs.config( {
+        requirejs.config( {
 
-                baseUrl: 'js/lib'
+            baseUrl: 'js/lib'
 
-            } );
+        } );
 
-            requirejs( modules );
-        </script>
+        requirejs( modules );
+    </script>
+
     </body>
 </html>
